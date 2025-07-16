@@ -98,7 +98,7 @@
   <section class="section">
     <h2>📫 Contact</h2>
     <ul>
-      <li>LinkedIn: <a href="https://linkedin.com/in/YOURNAME" target="_blank">linkedin.com/in/YOURNAME</a></li>
+      <li>LinkedIn: <a href="https://www.linkedin.com/in/harrison-lurgio-827a2b34a/" target="_blank">linkedin.com/in/Harrison Lurgio</a></li>
       <li>GitHub: <a href="https://github.com/lurgioh" target="_blank">github.com/lurgioh</a></li>
     </ul>
   </section>
