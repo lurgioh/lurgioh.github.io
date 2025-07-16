@@ -111,7 +111,7 @@
   <section class="section">
     <h2>📫 Contact</h2>
     <ul class="social-icons">
-      <li><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="24"> <a href="https://linkedin.com/in/YOURNAME" target="_blank">linkedin.com/in/YOURNAME</a></li>
+      <li><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="24"> <a href="https://www.linkedin.com/in/harrison-lurgio-827a2b34a/" target="_blank">linkedin.com/in/Harrison Lurgio</a></li>
       <li><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" width="24"> <a href="https://github.com/lurgioh" target="_blank">github.com/lurgioh</a></li>
     </ul>
   </section>
