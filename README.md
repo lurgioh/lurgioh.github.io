@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -50,16 +49,8 @@
     a:hover {
       text-decoration: underline;
     }
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      justify-content: center;
-    }
-    .gallery img {
-      width: 300px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,255,174,0.3);
+    .badges img {
+      margin: 5px;
     }
     footer {
       text-align: center;
@@ -78,7 +69,7 @@
   <section class="section">
     <h2>📂 Featured Projects</h2>
     <ul>
-      <li><strong>💻 Reverse Shell Malware Lab</strong> – Simulated a reverse shell attack in a secure internal network environment using Kali and Windows VMs. <a href="https://github.com/lurgioh/SOC-Analyst-HomeLab" target="_blank">View Project</a></li>
+      <li><strong>💻 Reverse Shell Malware Lab</strong> – Simulated a reverse shell attack in a secure internal network environment using Kali and Windows VMs. <a href="https://github.com/lurgioh/SOC-Analyst-HomeLab-Malware-Reverse-Shell-Lab" target="_blank">View Project</a></li>
       <li><strong>🔎 Nmap Scanning Reports</strong> – Conducted advanced port scanning and OS fingerprinting with report writing. <a href="https://github.com/lurgioh/SOC-Analyst-HomeLab-nmap" target="_blank">View Project</a></li>
       <li><strong>🛠️ TryHackMe SOC Level 1</strong> – Documented training from the SOC Level 1 path on TryHackMe. <a href="https://github.com/lurgioh/TryHackMe-Level1-SOC" target="_blank">View Notes</a></li>
     </ul>
@@ -97,20 +88,11 @@
   </section>
 
   <section class="section">
-    <h2>🖼️ Project Gallery</h2>
-    <div class="gallery">
-      <img src="https://user-images.githubusercontent.com/placeholder1.png" alt="Malware Lab Screenshot">
-      <img src="https://user-images.githubusercontent.com/placeholder2.png" alt="Nmap Report Screenshot">
-      <img src="https://user-images.githubusercontent.com/placeholder3.png" alt="TryHackMe Training">
-    </div>
-  </section>
-
-  <section class="section">
     <h2>🎓 Certifications</h2>
-    <ul>
-      <li>🛠️ Google Cybersecurity Certificate – In Progress</li>
-      <li>🔐 CompTIA Security+ (SY0-701) – Studying</li>
-    </ul>
+    <div class="badges">
+      <img src="https://img.shields.io/badge/Google%20Cybersecurity%20Certificate-In%20Progress-34A853?style=for-the-badge&logo=google&logoColor=white" alt="Google Cybersecurity Certificate">
+      <img src="https://img.shields.io/badge/CompTIA%20Security%2B-Studying-EA3C53?style=for-the-badge&logo=CompTIA&logoColor=white" alt="CompTIA Security+">
+    </div>
   </section>
 
   <section class="section">
