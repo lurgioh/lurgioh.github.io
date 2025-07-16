@@ -15,10 +15,12 @@
       background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
       color: #fff;
       padding: 40px;
+      overflow-x: hidden;
     }
     header {
       text-align: center;
       margin-bottom: 40px;
+      animation: fadeIn 1.2s ease-in-out;
     }
     header h1 {
       font-family: 'Orbitron', sans-serif;
@@ -31,6 +33,7 @@
     }
     .section {
       margin-bottom: 40px;
+      animation: fadeInUp 1s ease forwards;
     }
     .section h2 {
       border-left: 5px solid #00ffae;
@@ -49,14 +52,24 @@
     a:hover {
       text-decoration: underline;
     }
-    .badges img {
+    .badges img, .social-icons img {
       margin: 5px;
+      height: 30px;
+      vertical-align: middle;
     }
     footer {
       text-align: center;
       margin-top: 60px;
       font-size: 0.9rem;
       color: #888;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -90,16 +103,16 @@
   <section class="section">
     <h2>🎓 Certifications</h2>
     <div class="badges">
-      <img src="https://img.shields.io/badge/Google%20Cybersecurity%20Certificate-In%20Progress-34A853?style=for-the-badge&logo=google&logoColor=white" alt="Google Cybersecurity Certificate">
-      <img src="https://img.shields.io/badge/CompTIA%20Security%2B-Studying-EA3C53?style=for-the-badge&logo=CompTIA&logoColor=white" alt="CompTIA Security+">
+      <img src="https://img.shields.io/badge/Google%20Cybersecurity%20Certificate-Completed-34A853?style=for-the-badge&logo=google&logoColor=white" alt="Google Cybersecurity Certificate">
+      <img src="https://img.shields.io/badge/CompTIA%20Security%2B-In%20Progress-EA3C53?style=for-the-badge&logo=CompTIA&logoColor=white" alt="CompTIA Security+">
     </div>
   </section>
 
   <section class="section">
     <h2>📫 Contact</h2>
-    <ul>
-      <li>LinkedIn: <a href="https://www.linkedin.com/in/harrison-lurgio-827a2b34a/" target="_blank">linkedin.com/in/Harrison Lurgio</a></li>
-      <li>GitHub: <a href="https://github.com/lurgioh" target="_blank">github.com/lurgioh</a></li>
+    <ul class="social-icons">
+      <li><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="24"> <a href="https://linkedin.com/in/YOURNAME" target="_blank">linkedin.com/in/YOURNAME</a></li>
+      <li><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" width="24"> <a href="https://github.com/lurgioh" target="_blank">github.com/lurgioh</a></li>
     </ul>
   </section>
 
