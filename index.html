@@ -1,1 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Harrison Lurgio • Portfolio & Homelab</title>
+  <meta name="description" content="Portfolio and homelab projects by Harrison Lurgio—MIS + Cybersecurity student. ARK servers, home lab builds, dashboards, and more." />
+  <meta name="theme-color" content="#0ea5e9" />
+  <style>
+    :root{
+      --bg:#0b1020; --panel:#0f172a; --text:#e2e8f0; --muted:#94a3b8; --accent:#38bdf8; --card:#0b1224; --border:#1f2a44;
+      --bg-light:#f7fafc; --panel-light:#ffffff; --text-dark:#0f172a; --muted-dark:#475569; --card-light:#f8fafc; --border-light:#e2e8f0;
+    }
+    [data-theme="light"]{
+      --bg:var(--bg-light); --panel:var(--panel-light); --text:var(--text-dark); --muted:var(--muted-dark); --card:var(--card-light); --border:var(--border-light);
+    }
+
+    html,body{height:100%;}
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background:radial-gradient(1200px 600px at 10% -10%, rgba(56,189,248,.15), transparent 40%),
+                 radial-gradient(1000px 600px at 110% 0%, rgba(99,102,241,.12), transparent 40%),
+                 var(--bg);
+      color:var(--text); line-height:1.6;
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .wrap{max-width:1100px; margin-inline:auto; padding:28px 20px}
+    header{
+      position:sticky; top:0; z-index:50; backdrop-filter:saturate(160%) blur(6px); border-bottom:1px solid var(--border);
+      background:linear-gradient( to bottom, rgba(10,15,30,.85), rgba(10,15,30,.65));
+    }
+    header .inner{display:flex; align-items:center; justify-content:space-between; gap:16px;}
+    nav a{margin:0 10px; font-weight:600; color:var(--muted)}
+    nav a:hover{color:var(--text)}
+    .btn{display:inline-flex; align-items:center; gap:8px; border:1px solid var(--border); background:var(--panel); color:var(--text); padding:10px 14px; border-radius:14px; font-weight:600}
+    .btn:hover{transform:translateY(-1px); box-shadow:0 6px 18px rgba(0,0,0,.15); text-decoration:none}
+
+    .hero{display:grid; grid-template-columns:1.2fr .8fr; gap:26px; align-items:center; margin-top:28px}
+    .hero h1{font-size:clamp(28px, 4vw, 44px); line-height:1.1; margin:0 0 10px}
+    .kicker{color:var(--muted); font-weight:600; letter-spacing:.08em; text-transform:uppercase}
+    .pill{display:inline-block; padding:6px 10px; border-radius:999px; border:1px solid var(--border); background:linear-gradient(180deg, var(--panel), var(--card)); font-size:12px; color:var(--muted)}
+    .hero aside{
+      border:1px solid var(--border); background:linear-gradient(180deg, var(--panel), var(--card)); padding:18px; border-radius:20px
+    }
+
+    section{margin-top:48px}
+    .section-title{display:flex; align-items:center; justify-content:space-between; gap:10px;}
+    .section-title h2{margin:0; font-size:clamp(20px,3vw,28px)}
+    .grid{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:18px}
+
+    .card{border:1px solid var(--border); background:linear-gradient(180deg, var(--panel), var(--card)); border-radius:18px; overflow:hidden; display:flex; flex-direction:column}
+    .card .thumb{height:150px; background:linear-gradient(135deg, rgba(56,189,248,.3), rgba(99,102,241,.25)); border-bottom:1px solid var(--border)}
+    .card .body{padding:16px}
+    .tag{display:inline-block; font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid var(--border); color:var(--muted)}
+    .meta{color:var(--muted); font-size:14px}
+
+    .twocol{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+
+    footer{margin:60px 0 40px; border-top:1px solid var(--border); padding-top:20px; color:var(--muted)}
+
+    .theme{border:1px solid var(--border); background:var(--panel); border-radius:12px; padding:6px}
+    .theme button{background:none; color:var(--text); border:none; padding:8px 10px; border-radius:8px; cursor:pointer}
+    .theme button.active{background:var(--card)}
+
+    @media (max-width: 960px){
+      .hero{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr 1fr}
+      .twocol{grid-template-columns:1fr}
+    }
+    @media (max-width: 640px){
+      .grid{grid-template-columns:1fr}
+    }
+  </style>
+  <script>
+    // theme persistence
+    const applyTheme = t => document.documentElement.setAttribute('data-theme', t);
+    const saved = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    applyTheme(saved);
+    window.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('[data-theme-btn]').forEach(btn => btn.addEventListener('click', () => {
+        const t = btn.dataset.themeBtn; applyTheme(t); localStorage.setItem('theme', t);
+        document.querySelectorAll('[data-theme-btn]').forEach(b => b.classList.toggle('active', b === btn));
+      }));
+      // Activate current theme button
+      const active = document.querySelector(`[data-theme-btn="${saved}"]`); if(active) active.classList.add('active');
+    });
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Harrison Lurgio",
+    "url": "https://your-username.github.io/",
+    "sameAs": ["https://github.com/your-username", "https://www.linkedin.com/in/your-handle"],
+    "jobTitle": "MIS + Cybersecurity Student",
+    "alumniOf": {"@type": "CollegeOrUniversity", "name": "Florida Atlantic University"}
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="wrap inner">
+      <div style="display:flex;align-items:center;gap:12px">
+        <span class="pill">Portfolio</span>
+        <nav>
+          <a href="#projects">Projects</a>
+          <a href="#homelab">Homelab</a>
+          <a href="#notes">Notes</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+      <div class="theme" aria-label="Theme switcher">
+        <button data-theme-btn="dark" aria-label="Dark theme">🌙</button>
+        <button data-theme-btn="light" aria-label="Light theme">☀️</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero" id="top">
+      <div>
+        <div class="kicker">Hi, I'm Harrison 👋</div>
+        <h1>MIS + Cybersecurity @ FAU • Building homelabs, dashboards, and game servers</h1>
+        <p>I'm focused on practical security, systems, and networking. You'll find ARK server hosting, pfSense/OPNsense experiments, Proxmox virtualization, Grafana dashboards, and study notes. I'm looking for an IT Help Desk / SOC / NOC / Sysadmin internship or entry‑level role.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+          <a class="btn" href="https://github.com/your-username" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Download Resume</a>
+          <a class="btn" href="#contact">Contact</a>
+        </div>
+      </div>
+      <aside>
+        <strong>Quick stats</strong>
+        <ul>
+          <li>Location: Boca Raton, FL</li>
+          <li>Current project: ARK server on bare metal + Proxmox cluster</li>
+          <li>Stack: Proxmox • pfSense • Tailscale • Grafana • Docker</li>
+          <li>Certs in progress: Security+ • Google Cyber</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section id="projects">
+      <div class="section-title">
+        <h2>Featured Projects</h2>
+        <a class="btn" href="https://github.com/your-username?tab=repositories" target="_blank" rel="noopener">All repos →</a>
+      </div>
+      <div class="grid" aria-label="Project cards">
+        <!-- Project 1 -->
+        <article class="card">
+          <div class="thumb" role="img" aria-label="Grafana dashboards"></div>
+          <div class="body">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+              <h3 style="margin:0">Home Network Observatory</h3>
+              <span class="tag">Grafana</span>
+            </div>
+            <p class="meta">pfSense → InfluxDB → Grafana; live dashboards for traffic, latency, and geolocation (honeypot feed optional).</p>
+            <p>
+              <a href="https://github.com/your-username/home-network-observatory" target="_blank" rel="noopener">Repo</a>
+              · <a href="#" target="_blank" rel="noopener">Docs</a>
+            </p>
+          </div>
+        </article>
+        <!-- Project 2 -->
+        <article class="card">
+          <div class="thumb" role="img" aria-label="ARK server"></div>
+          <div class="body">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+              <h3 style="margin:0">ARK Server (Xbox Cross‑Play)</h3>
+              <span class="tag">AMP + Bare Metal</span>
+            </div>
+            <p class="meta">Single box for ARK (bare metal) + separate Proxmox for VMs. Remote access via Tailscale and Playit.gg tunneling.</p>
+            <p>
+              <a href="https://github.com/your-username/ark-server-notes" target="_blank" rel="noopener">Setup Notes</a>
+              · <a href="#" target="_blank" rel="noopener">Status Page</a>
+            </p>
+          </div>
+        </article>
+        <!-- Project 3 -->
+        <article class="card">
+          <div class="thumb" role="img" aria-label="Proxmox lab"></div>
+          <div class="body">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+              <h3 style="margin:0">Proxmox Homelab</h3>
+              <span class="tag">Virtualization</span>
+            </div>
+            <p class="meta">Proxmox on spare hardware; VMs for pfSense, Pi‑hole, Grafana, Elastic; IaC-ish notes + backup strategy.</p>
+            <p>
+              <a href="https://github.com/your-username/proxmox-lab" target="_blank" rel="noopener">Repo</a>
+              · <a href="#" target="_blank" rel="noopener">Architecture</a>
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="homelab">
+      <div class="section-title"><h2>Homelab Gear</h2></div>
+      <div class="twocol">
+        <div class="card">
+          <div class="body">
+            <h3 style="margin-top:0">Current</h3>
+            <ul>
+              <li>Gaming PC: Ryzen 5 7600X + RX 6750 XT</li>
+              <li>Server 1: i5‑8500/8600 • 32GB DDR4 • Bare‑metal ARK</li>
+              <li>Server 2: i7‑11700KF + RTX 3060 • Proxmox</li>
+              <li>Networking: AT&T Fiber → (optional) personal router → switch</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card">
+          <div class="body">
+            <h3 style="margin-top:0">Roadmap</h3>
+            <ol>
+              <li>Finish ARK server + backups</li>
+              <li>Tailscale SSO & ACL cleanup</li>
+              <li>Grafana upgrade + alerting</li>
+              <li>NAS + ZFS snapshots</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="notes">
+      <div class="section-title"><h2>Notes & Write‑ups</h2> <span class="meta">Short posts on fixes, configs, and gotchas.</span></div>
+      <div class="grid">
+        <article class="card"><div class="body"><h3 style="margin-top:0">Tailscale on Proxmox (Quickstart)</h3><p class="meta">Steps + ACL example; exposing AMP safely.</p><p><a href="posts/tailscale-proxmox.html">Read →</a></p></div></article>
+        <article class="card"><div class="body"><h3 style="margin-top:0">pfSense → InfluxDB → Grafana</h3><p class="meta">Exporting firewall stats and building dashboards.</p><p><a href="posts/pfsense-grafana.html">Read →</a></p></div></article>
+        <article class="card"><div class="body"><h3 style="margin-top:0">ARK Server Backup Strategy</h3><p class="meta">Cron + restic to offsite storage.</p><p><a href="posts/ark-backups.html">Read →</a></p></div></article>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-title"><h2>Contact</h2></div>
+      <div class="card">
+        <div class="body">
+          <p><strong>Email:</strong> <a href="mailto:hlurgio@fau.edu">hlurgio@fau.edu</a></p>
+          <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/your-handle" target="_blank" rel="noopener">linkedin.com/in/your-handle</a></p>
+          <p><strong>GitHub:</strong> <a href="https://github.com/your-username" target="_blank" rel="noopener">github.com/your-username</a></p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>© <span id="y"></span> Harrison Lurgio. Built with plain HTML/CSS. Hosted on GitHub Pages.</p>
+      <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+    </footer>
+  </main>
+</body>
+</html>
 
