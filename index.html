@@ -11,38 +11,22 @@
       --bg:#0b1020; --panel:#0f172a; --text:#e2e8f0; --muted:#94a3b8; --accent:#38bdf8; --card:#0b1224; --border:#1f2a44;
       --bg-light:#f7fafc; --panel-light:#ffffff; --text-dark:#0f172a; --muted-dark:#475569; --card-light:#f8fafc; --border-light:#e2e8f0;
     }
-    
     [data-theme="light"]{
       --bg:var(--bg-light); --panel:var(--panel-light); --text:var(--text-dark); --muted:var(--muted-dark); --card:var(--card-light); --border:var(--border-light);
     }
-.mini-headshot {
-  width: 80px;            
-  height: 80px;
-  border-radius: 50%;     
-  object-fit: cover;       
-  border: 2px solid var(--border);
-  box-shadow: 0 0 10px rgba(56, 189, 248, 0.4); 
-  margin-right: 10px;      
-  flex-shrink: 0;
-}
-@keyframes pulseGlow {
-  0% { box-shadow: 0 0 8px rgba(56,189,248,0.4); }
-  50% { box-shadow: 0 0 16px rgba(56,189,248,0.7); }
-  100% { box-shadow: 0 0 8px rgba(56,189,248,0.4); }
-}
-.mini-headshot {
-  animation: pulseGlow 3s infinite ease-in-out;
-}
-@media (max-width: 640px) {
-  .hero > div {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  .mini-headshot {
-    margin: 0 0 12px 0;
-  }
-}
+
+    /* mini headshot */
+    .mini-headshot{
+      width:80px;height:80px;border-radius:50%;object-fit:cover;
+      border:2px solid var(--border);box-shadow:0 0 10px rgba(56,189,248,.4);margin-right:10px;flex-shrink:0;
+      animation:pulseGlow 3s infinite ease-in-out;
+    }
+    @keyframes pulseGlow{
+      0%{box-shadow:0 0 8px rgba(56,189,248,.4);}
+      50%{box-shadow:0 0 16px rgba(56,189,248,.7);}
+      100%{box-shadow:0 0 8px rgba(56,189,248,.4);}
+    }
+
     html,body{height:100%;}
     body{
       margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
@@ -69,9 +53,7 @@
     .hero h1{font-size:clamp(28px, 4vw, 44px); line-height:1.1; margin:0 0 10px}
     .kicker{color:var(--muted); font-weight:600; letter-spacing:.08em; text-transform:uppercase}
     .pill{display:inline-block; padding:6px 10px; border-radius:999px; border:1px solid var(--border); background:linear-gradient(180deg, var(--panel), var(--card)); font-size:12px; color:var(--muted)}
-    .hero aside{
-      border:1px solid var(--border); background:linear-gradient(180deg, var(--panel), var(--card)); padding:18px; border-radius:20px
-    }
+    .hero aside{border:1px solid var(--border); background:linear-gradient(180deg, var(--panel), var(--card)); padding:18px; border-radius:20px}
 
     section{margin-top:48px}
     .section-title{display:flex; align-items:center; justify-content:space-between; gap:10px;}
@@ -79,7 +61,12 @@
     .grid{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:18px}
 
     .card{border:1px solid var(--border); background:linear-gradient(180deg, var(--panel), var(--card)); border-radius:18px; overflow:hidden; display:flex; flex-direction:column}
-    .card .thumb{height:150px; background:linear-gradient(135deg, rgba(56,189,248,.3), rgba(99,102,241,.25)); border-bottom:1px solid var(--border)}
+
+    /* unified thumb styles for BOTH div.thumb and img.thumb */
+    .card .thumb{height:180px; display:block; border-bottom:1px solid var(--border);
+      background:linear-gradient(135deg, rgba(56,189,248,.28), rgba(99,102,241,.22));}
+    .card img.thumb{width:100%; height:180px; object-fit:cover; display:block; border-bottom:1px solid var(--border)}
+
     .card .body{padding:16px}
     .tag{display:inline-block; font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid var(--border); color:var(--muted)}
     .meta{color:var(--muted); font-size:14px}
@@ -99,8 +86,11 @@
     }
     @media (max-width: 640px){
       .grid{grid-template-columns:1fr}
+      .hero > div{flex-direction:column; align-items:center; text-align:center}
+      .mini-headshot{margin:0 0 12px 0}
     }
   </style>
+
   <script>
     // theme persistence
     const applyTheme = t => document.documentElement.setAttribute('data-theme', t);
@@ -111,10 +101,10 @@
         const t = btn.dataset.themeBtn; applyTheme(t); localStorage.setItem('theme', t);
         document.querySelectorAll('[data-theme-btn]').forEach(b => b.classList.toggle('active', b === btn));
       }));
-      // Activate current theme button
       const active = document.querySelector(`[data-theme-btn="${saved}"]`); if(active) active.classList.add('active');
     });
   </script>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -146,74 +136,81 @@
     </div>
   </header>
 
-<section class="hero" id="top">
-  <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
-  <img src="headshot.jpg" alt="Harrison Lurgio" class="mini-headshot">
-    <div>
-      <div class="kicker">Hi, I'm Harrison 👋</div>
-      <h1>MIS + Cybersecurity @ FAU</h1>
-      <p>Building homelabs, dashboards, and game servers. Focused on systems, networking, and practical security.</p>
-    </div>
-  </div>
-</section>
-
+  <main class="wrap">
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+        <img src="headshot.jpg" alt="Harrison Lurgio" class="mini-headshot">
+        <div>
+          <div class="kicker">Hi, I'm Harrison 👋</div>
+          <h1>MIS + Cybersecurity @ FAU</h1>
+          <p>Building homelabs, dashboards, and game servers. Focused on systems, networking, and practical security.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+            <a class="btn" href="https://github.com/lurgioh" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn" href="Resume.pdf" target="_blank" rel="noopener">Download Resume</a>
+          </div>
+        </div>
+      </div>
+      <aside>
         <strong>Quick stats</strong>
         <ul>
           <li>Location: Boca Raton, FL</li>
           <li>Current project: ARK server on bare metal + Proxmox cluster</li>
           <li>Stack: Proxmox • Docker</li>
-          <li>Certs in progress: CompTIA A+ </li>
-          <li>Certs completed: Google Cybersecurtiy </li>
+          <li>Certs in progress: CompTIA A+</li>
+          <li>Certs completed: Google Cybersecurity</li>
         </ul>
       </aside>
     </section>
 
+    <!-- PROJECTS -->
     <section id="projects">
       <div class="section-title">
         <h2>Featured Projects</h2>
-        <a class="btn" href="https://github.com/your-username?tab=repositories" target="_blank" rel="noopener">All repos →</a>
+        <a class="btn" href="https://github.com/lurgioh?tab=repositories" target="_blank" rel="noopener">All repos →</a>
       </div>
+
       <div class="grid" aria-label="Project cards">
-        <!-- Project 1 -->
+        <!-- Project 1 (keeps placeholder thumb) -->
         <article class="card">
           <div class="thumb" role="img" aria-label="Grafana dashboards"></div>
           <div class="body">
-            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;">
               <h3 style="margin:0">Software on Homelab</h3>
               <span class="tag">Grafana</span>
             </div>
-            <p class="meta">pfSense → InfluxDB → Grafana; live dashboards for traffic, latency, and geolocation (honeypot feed optional).</p>
+            <p class="meta">pfSense → InfluxDB → Grafana; live dashboards for traffic, latency, and geolocation.</p>
             <p>
               <a href="https://github.com/your-username/home-network-observatory" target="_blank" rel="noopener">Repo</a>
               · <a href="#" target="_blank" rel="noopener">Docs</a>
             </p>
           </div>
         </article>
-        <!-- Project 2 -->
+
+        <!-- Project 2 (uses your root-level image) -->
         <article class="card">
           <img src="ark-server.png" alt="ARK dinosaur image" class="thumb">
-           <div class="body">
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;">
-            <h3 style="margin:0">ARK Server (Bare Metal)</h3>
+          <div class="body">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;">
+              <h3 style="margin:0">ARK Server (Bare Metal)</h3>
               <span class="tag">AMP + Bare Metal</span>
             </div>
-    <p class="meta">
-      20-slot ARK: Survival Evolved server on bare metal using Playit.gg and Tailscale for secure external access.
-    </p>
-    <p>
-      <a href="https://github.com/lurgioh/ARK-Server-Steam-/tree/main" target="_blank" rel="noopener">View on GitHub →</a>
-    </p>
-  </div>
-</article>
-        <!-- Project 3 -->
+            <p class="meta">20-slot ARK: Survival Evolved server on bare metal using Playit.gg and Tailscale for secure external access.</p>
+            <p>
+              <a href="https://github.com/lurgioh/ARK-Server-Steam-/tree/main" target="_blank" rel="noopener">View on GitHub →</a>
+            </p>
+          </div>
+        </article>
+
+        <!-- Project 3 (keeps placeholder thumb) -->
         <article class="card">
           <div class="thumb" role="img" aria-label="Proxmox lab"></div>
           <div class="body">
-            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;">
               <h3 style="margin:0">Proxmox Homelab</h3>
               <span class="tag">Virtualization</span>
             </div>
-            <p class="meta">Proxmox on spare hardware; VMs for kali linux, Pi‑hole, and nas</p>
+            <p class="meta">Proxmox on spare hardware; VMs for Kali Linux, Pi-hole, and NAS.</p>
             <p>
               <a href="https://github.com/your-username/proxmox-lab" target="_blank" rel="noopener">Repo</a>
               · <a href="#" target="_blank" rel="noopener">Architecture</a>
@@ -223,6 +220,7 @@
       </div>
     </section>
 
+    <!-- HOMELAB -->
     <section id="homelab">
       <div class="section-title"><h2>Homelab Gear</h2></div>
       <div class="twocol">
@@ -231,9 +229,9 @@
             <h3 style="margin-top:0">Current</h3>
             <ul>
               <li>Gaming PC: Ryzen 5 7600X + RX 6750 XT</li>
-              <li>Server 1: i5‑8600 • 16GB DDR4 • Bare‑metal ARK</li>
+              <li>Server 1: i5-8600 • 16GB DDR4 • Bare-metal ARK</li>
               <li>Server 2: i5-7500 + 16GB DDR4 • Proxmox</li>
-              <li>Networking: AT&T Fiber (ISP) → personal router → switch -> server</li>
+              <li>Networking: AT&T Fiber (ISP) → personal router → switch → server</li>
             </ul>
           </div>
         </div>
@@ -251,8 +249,12 @@
       </div>
     </section>
 
+    <!-- NOTES -->
     <section id="notes">
-      <div class="section-title"><h2>Notes & Write‑ups</h2> <span class="meta">Short posts on fixes, configs, and gotchas.</span></div>
+      <div class="section-title">
+        <h2>Notes & Write-ups</h2>
+        <span class="meta">Short posts on fixes, configs, and gotchas.</span>
+      </div>
       <div class="grid">
         <article class="card"><div class="body"><h3 style="margin-top:0">Tailscale on Proxmox (Quickstart)</h3><p class="meta">Steps + ACL example; exposing AMP safely.</p><p><a href="posts/tailscale-proxmox.html">Read →</a></p></div></article>
         <article class="card"><div class="body"><h3 style="margin-top:0">pfSense → InfluxDB → Grafana</h3><p class="meta">Exporting firewall stats and building dashboards.</p><p><a href="posts/pfsense-grafana.html">Read →</a></p></div></article>
@@ -260,12 +262,13 @@
       </div>
     </section>
 
+    <!-- CONTACT -->
     <section id="contact">
       <div class="section-title"><h2>Contact</h2></div>
       <div class="card">
         <div class="body">
           <p><strong>Email:</strong> <a href="mailto:hlurgio@fau.edu">hlurgio@fau.edu</a></p>
-          <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/harrison-lurgio-827a2b34a/" target="_blank" rel="noopener">linkedin.com/in/Harrison-Lurgio</a></p>
+          <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/harrison-lurgio-827a2b34a/" target="_blank" rel="noopener">linkedin.com/in/harrison-lurgio</a></p>
           <p><strong>GitHub:</strong> <a href="https://github.com/lurgioh" target="_blank" rel="noopener">github.com/lurgioh</a></p>
         </div>
       </div>
@@ -278,4 +281,3 @@
   </main>
 </body>
 </html>
-
