@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Server Gallery • Harrison Lurgio</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background: #0b1020;
+      color: #e2e8f0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .card {
+      background: linear-gradient(180deg, #0f172a, #0b1224);
+      border: 1px solid #1f2a44;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+    }
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-bottom: 1px solid #1f2a44;
+    }
+    .card p {
+      padding: 10px 15px;
+      font-size: 14px;
+      color: #94a3b8;
+    }
+    a.back {
+      display: inline-block;
+      margin-top: 20px;
+      color: #38bdf8;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    a.back:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>🖥️ My Server Setup Gallery</h1>
+  <div class="gallery">
+    <div class="card">
+      <img src="server1.jpg" alt="Proxmox server">
+      <p>Main Proxmox host running virtual machines and containers.</p>
+    </div>
+    <div class="card">
+      <img src="nas.jpg" alt="TrueNAS box">
+      <p>TrueNAS box for network storage and snapshots.</p>
+    </div>
+    <div class="card">
+      <img src="rack.jpg" alt="Network rack">
+      <p>Mini rack setup with router, switch, and Raspberry Pi monitoring node.</p>
+    </div>
+  </div>
+  <a href="index.html" class="back">← Back to Home</a>
+</body>
+</html>
