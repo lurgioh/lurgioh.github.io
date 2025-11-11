@@ -173,22 +173,22 @@
       </div>
 
       <div class="grid" aria-label="Project cards">
-        <!-- Project 1 (keeps placeholder thumb) -->
+        <!-- Project 1 (Minecraft Server with image) -->
         <article class="card">
-          <div class="thumb" role="img" aria-label="Grafana dashboards"></div>
+          <img src="images.jpeg" alt="Minecraft Pixelmon server screenshot" class="thumb">
           <div class="body">
             <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;">
-              <h3 style="margin:0">MineCraft Server</h3>
+              <h3 style="margin:0">Minecraft Server</h3>
               <span class="tag">Pixelmon</span>
             </div>
             <p class="meta">Debian Linux + AMP + Minecraft + Pixelmon</p>
             <p>
-              <a href="https://github.com/lurgioh/Minecraft-server-build" target="_blank" rel="noopener">View on GitHub</a>
+              <a href="https://github.com/lurgioh/Minecraft-server-build" target="_blank" rel="noopener">View on GitHub →</a>
             </p>
           </div>
         </article>
 
-        <!-- Project 2 (uses your root-level image) -->
+        <!-- Project 2 (ARK Server) -->
         <article class="card">
           <img src="ark-server.png" alt="ARK dinosaur image" class="thumb">
           <div class="body">
@@ -203,25 +203,27 @@
           </div>
         </article>
         
-     <!-- Project 3 (TrueNAS + Tailscale Setup) -->
-<article class="card">
-  <img src="truenas.jpg" alt="TrueNAS logo and NAS setup" class="thumb">
-  <div class="body">
-    <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;">
-      <h3 style="margin:0">TrueNAS &amp; Tailscale Setup</h3>
-      <span class="tag">Virtualization</span>
-    </div>
-    <p class="meta">
-      Secure and remote-accessible NAS setup using TrueNAS SCALE with Tailscale.
-      Provides centralized storage, SMB shares, and remote admin access with no port forwarding.
-    </p>
-    <p>
-      <a href="https://github.com/lurgioh/Truenas-Tailscale/blob/main/README.md" target="_blank" rel="noopener">
-        View on GitHub →
-      </a>
-    </p>
-  </div>
-</article>
+        <!-- Project 3 (TrueNAS + Tailscale Setup) -->
+        <article class="card">
+          <img src="truenas.jpg" alt="TrueNAS logo and NAS setup" class="thumb">
+          <div class="body">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;">
+              <h3 style="margin:0">TrueNAS &amp; Tailscale Setup</h3>
+              <span class="tag">Virtualization</span>
+            </div>
+            <p class="meta">
+              Secure and remote-accessible NAS setup using TrueNAS SCALE with Tailscale.
+              Provides centralized storage, SMB shares, and remote admin access with no port forwarding.
+            </p>
+            <p>
+              <a href="https://github.com/lurgioh/Truenas-Tailscale/blob/main/README.md" target="_blank" rel="noopener">
+                View on GitHub →
+              </a>
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
 
     <!-- HOMELAB -->
     <section id="homelab">
@@ -279,8 +281,4 @@
 
     <footer>
       <p>© <span id="y"></span> Harrison Lurgio. Built with plain HTML/CSS. Hosted on GitHub Pages.</p>
-      <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
-    </footer>
-  </main>
-</body>
-</html>
+      <script>document.getElementById('y').textContent = new Date().get
