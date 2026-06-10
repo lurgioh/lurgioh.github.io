@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harrison Lurgio | MIS + Cybersecurity</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a class="nav-logo" href="#hero">HL<span class="accent">.</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#timeline">Experience</a></li>
+        <li><a href="#certifications">Certs</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#writeups">Write-ups</a></li>
+        <li><a href="#stats">Stats</a></li>
+        <li><a href="#contact" class="nav-cta">Contact</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg">
+      <canvas id="matrixCanvas"></canvas>
+    </div>
+    <div class="hero-content">
+      <p class="hero-pre"><span class="terminal-prompt">~/portfolio</span> <span class="blink">▮</span></p>
+      <h1 class="hero-name">Harrison <span class="accent">Lurgio</span></h1>
+      <div class="hero-typed-wrapper">
+        <span class="hero-typed" id="typedText"></span><span class="cursor">|</span>
+      </div>
+      <p class="hero-sub">MIS + Cybersecurity @ Florida Atlantic University &nbsp;·&nbsp; Boca Raton, FL</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="Resume.pdf" target="_blank" class="btn btn-outline"><i class="fas fa-file-alt"></i> Resume</a>
+      </div>
+      <div class="hero-socials">
+        <a href="https://github.com/lurgioh" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/harrison-lurgio-827a2b34a/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:hlurgio@fau.edu" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <span>scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2 class="section-title">About <span class="accent">Me</span></h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>I'm a <strong>MIS and Cybersecurity student</strong> at Florida Atlantic University with a deep passion for building real infrastructure — not just studying it. From spinning up Proxmox clusters and TrueNAS arrays to deploying cloud honeypots that catch live threat actors, I learn by doing.</p>
+          <p>My homelab is my proving ground: every project here reflects a skill I deliberately built. I'm focused on systems, networking, and practical security, and I'm working toward CompTIA Network+ and Security+ certifications to formalize what I've already been doing hands-on.</p>
+          <p>When I'm not in the lab, I work as a <strong>Technology Support Technician at FAU</strong>, helping the university community stay connected and productive.</p>
+          <div class="about-facts">
+            <div class="fact"><i class="fas fa-map-marker-alt accent"></i> Boca Raton, FL</div>
+            <div class="fact"><i class="fas fa-graduation-cap accent"></i> Florida Atlantic University</div>
+            <div class="fact"><i class="fas fa-briefcase accent"></i> IT Support @ FAU</div>
+            <div class="fact"><i class="fas fa-shield-alt accent"></i> Aspiring Security Engineer</div>
+          </div>
+        </div>
+        <div class="about-terminal">
+          <div class="terminal-window">
+            <div class="terminal-bar">
+              <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+              <span class="terminal-title">harrison@homelab:~$</span>
+            </div>
+            <div class="terminal-body" id="terminalBody">
+              <div class="t-line"><span class="t-prompt">$</span> whoami</div>
+              <div class="t-out">Harrison Lurgio</div>
+              <div class="t-line"><span class="t-prompt">$</span> cat interests.txt</div>
+              <div class="t-out">[ Homelab, Networking, Security,</div>
+              <div class="t-out">&nbsp;&nbsp;Virtualization, Linux, CTFs ]</div>
+              <div class="t-line"><span class="t-prompt">$</span> uname -a</div>
+              <div class="t-out">Proxmox VE 8.x | TrueNAS SCALE</div>
+              <div class="t-line"><span class="t-prompt">$</span> ls ~/projects/</div>
+              <div class="t-out accent">honeypot/ ark-server/ truenas/</div>
+              <div class="t-out accent">minecraft/ pfsense/ proxmox/</div>
+              <div class="t-line"><span class="t-prompt">$</span> <span class="blink">▮</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Technical <span class="accent">Skills</span></h2>
+      <div class="skills-categories">
+
+        <div class="skill-category">
+          <h3><i class="fas fa-server accent"></i> Infrastructure</h3>
+          <div class="skill-tags">
+            <span class="tag">Proxmox VE</span>
+            <span class="tag">TrueNAS SCALE</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Linux (Debian/Ubuntu)</span>
+            <span class="tag">Bare Metal</span>
+            <span class="tag">ZFS</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3><i class="fas fa-network-wired accent"></i> Networking</h3>
+          <div class="skill-tags">
+            <span class="tag">pfSense</span>
+            <span class="tag">Tailscale</span>
+            <span class="tag">VLANs</span>
+            <span class="tag">DNS/DHCP</span>
+            <span class="tag">Firewall Rules</span>
+            <span class="tag">TCP/IP</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3><i class="fas fa-shield-alt accent"></i> Security</h3>
+          <div class="skill-tags">
+            <span class="tag">Honeypots (T-Pot)</span>
+            <span class="tag">Threat Monitoring</span>
+            <span class="tag">SSH Hardening</span>
+            <span class="tag">Zero Trust Networking</span>
+            <span class="tag">SIEM Basics</span>
+            <span class="tag">DigitalOcean Cloud</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3><i class="fas fa-chart-line accent"></i> Monitoring & Observability</h3>
+          <div class="skill-tags">
+            <span class="tag">Grafana</span>
+            <span class="tag">InfluxDB</span>
+            <span class="tag">AMP Panel</span>
+            <span class="tag">Uptime Kuma</span>
+            <span class="tag">Log Analysis</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3><i class="fas fa-tools accent"></i> Tools & Other</h3>
+          <div class="skill-tags">
+            <span class="tag">Git / GitHub</span>
+            <span class="tag">Markdown</span>
+            <span class="tag">Bash Scripting</span>
+            <span class="tag">Windows Server</span>
+            <span class="tag">ServiceNow</span>
+            <span class="tag">Microsoft 365</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section id="timeline" class="section">
+    <div class="container">
+      <h2 class="section-title">Experience &amp; <span class="accent">Timeline</span></h2>
+      <div class="timeline">
+
+        <div class="tl-item tl-right">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <span class="tl-date">2026</span>
+            <h3>CompTIA Security+ <span class="badge badge-planned">Planned</span></h3>
+            <p>Targeting SY0-701 — formalizing hands-on security knowledge into industry-recognized certification.</p>
+          </div>
+        </div>
+
+        <div class="tl-item tl-left">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <span class="tl-date">2026</span>
+            <h3>CompTIA Network+ <span class="badge badge-planned">Planned</span></h3>
+            <p>Targeting N10-009 — validating the networking fundamentals built through pfSense and homelab work.</p>
+          </div>
+        </div>
+
+        <div class="tl-item tl-right">
+          <div class="tl-dot active"></div>
+          <div class="tl-card active">
+            <span class="tl-date">2025 – Present</span>
+            <h3>Technology Support Technician <span class="badge badge-active">Active</span></h3>
+            <p><strong>Florida Atlantic University</strong> — Diagnoses hardware, software, and network issues. Manages support tickets, assists users with FAU systems, and maintains knowledge base documentation in a high-volume environment.</p>
+          </div>
+        </div>
+
+        <div class="tl-item tl-left">
+          <div class="tl-dot active"></div>
+          <div class="tl-card active">
+            <span class="tl-date">2025 – Present</span>
+            <h3>Google IT Specialist <span class="badge badge-progress">In Progress</span></h3>
+            <p>Pursuing Google's IT Support Professional Certificate to reinforce foundational IT competencies.</p>
+          </div>
+        </div>
+
+        <div class="tl-item tl-right">
+          <div class="tl-dot completed"></div>
+          <div class="tl-card">
+            <span class="tl-date">2025</span>
+            <h3>Google Cybersecurity Certificate <span class="badge badge-done">Completed</span></h3>
+            <p>Completed Google's Cybersecurity Professional Certificate covering threat detection, SIEM tools, Python automation, and incident response frameworks.</p>
+          </div>
+        </div>
+
+        <div class="tl-item tl-left">
+          <div class="tl-dot active"></div>
+          <div class="tl-card active">
+            <span class="tl-date">2024 – Present</span>
+            <h3>B.S. MIS + Cybersecurity <span class="badge badge-active">Active</span></h3>
+            <p><strong>Florida Atlantic University</strong> — Double concentration in Management Information Systems and Cybersecurity. Building the theoretical foundation to complement hands-on homelab experience.</p>
+          </div>
+        </div>
+
+        <div class="tl-item tl-right">
+          <div class="tl-dot completed"></div>
+          <div class="tl-card">
+            <span class="tl-date">2023 – 2024</span>
+            <h3>Homelab — First Build</h3>
+            <p>Built first Proxmox cluster on i5-7500 hardware. Started self-hosting services, learning Linux administration, and experimenting with Docker containers and networking fundamentals.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Certifications &amp; <span class="accent">Credentials</span></h2>
+      <div class="certs-grid">
+
+        <div class="cert-card cert-done">
+          <div class="cert-icon"><i class="fab fa-google"></i></div>
+          <div class="cert-info">
+            <h3>Google Cybersecurity Certificate</h3>
+            <p>Coursera / Google</p>
+            <span class="cert-badge badge-done">Completed 2025</span>
+          </div>
+          <div class="cert-check"><i class="fas fa-check-circle"></i></div>
+        </div>
+
+        <div class="cert-card cert-progress">
+          <div class="cert-icon"><i class="fab fa-google"></i></div>
+          <div class="cert-info">
+            <h3>Google IT Support Specialist</h3>
+            <p>Coursera / Google</p>
+            <span class="cert-badge badge-progress">In Progress</span>
+          </div>
+          <div class="cert-check"><i class="fas fa-spinner fa-spin"></i></div>
+        </div>
+
+        <div class="cert-card cert-planned">
+          <div class="cert-icon"><i class="fas fa-network-wired"></i></div>
+          <div class="cert-info">
+            <h3>CompTIA Network+</h3>
+            <p>CompTIA — N10-009</p>
+            <span class="cert-badge badge-planned">Goal: 2026</span>
+          </div>
+          <div class="cert-check"><i class="fas fa-clock"></i></div>
+        </div>
+
+        <div class="cert-card cert-planned">
+          <div class="cert-icon"><i class="fas fa-shield-alt"></i></div>
+          <div class="cert-info">
+            <h3>CompTIA Security+</h3>
+            <p>CompTIA — SY0-701</p>
+            <span class="cert-badge badge-planned">Goal: 2026</span>
+          </div>
+          <div class="cert-check"><i class="fas fa-clock"></i></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section">
+    <div class="container">
+      <h2 class="section-title">Featured <span class="accent">Projects</span></h2>
+      <div class="projects-grid">
+
+        <div class="project-card featured">
+          <div class="project-header">
+            <div class="project-icon"><i class="fas fa-bug"></i></div>
+            <div class="project-links">
+              <a href="https://github.com/lurgioh/cloud-honeypot-project" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+          <span class="project-tag">Security</span>
+          <h3>Cloud Honeypot (T-Pot)</h3>
+          <p>Deployed T-Pot on DigitalOcean to capture live attacker traffic. Monitors SSH brute-force campaigns, botnet activity, and malware drop attempts with real-time dashboards.</p>
+          <div class="project-tech">
+            <span>T-Pot</span><span>DigitalOcean</span><span>Elastic SIEM</span><span>Linux</span>
+          </div>
+        </div>
+
+        <div class="project-card featured">
+          <div class="project-header">
+            <div class="project-icon"><i class="fas fa-hdd"></i></div>
+            <div class="project-links">
+              <a href="https://github.com/lurgioh/Truenas-Tailscale/blob/main/README.md" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+          <span class="project-tag">Infrastructure</span>
+          <h3>TrueNAS + Tailscale NAS</h3>
+          <p>Built a fully remote-accessible NAS using TrueNAS SCALE with ZFS storage, SMB shares, and Tailscale for zero-trust remote access — no port forwarding required.</p>
+          <div class="project-tech">
+            <span>TrueNAS SCALE</span><span>ZFS</span><span>Tailscale</span><span>SMB</span>
+          </div>
+        </div>
+
+        <div class="project-card featured">
+          <div class="project-header">
+            <div class="project-icon"><i class="fas fa-fire"></i></div>
+            <div class="project-links">
+              <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+          <span class="project-tag">Networking</span>
+          <h3>pfSense + Grafana Monitoring</h3>
+          <p>Configured pfSense as the homelab router/firewall with InfluxDB metric export and a Grafana dashboard providing real-time visibility into bandwidth, threats, and uptime.</p>
+          <div class="project-tech">
+            <span>pfSense</span><span>Grafana</span><span>InfluxDB</span><span>Telegraf</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon"><i class="fas fa-cubes"></i></div>
+            <div class="project-links">
+              <a href="https://github.com/lurgioh/ARK-Server-Steam-/tree/main" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+          <span class="project-tag">Linux</span>
+          <h3>ARK Server (Bare Metal)</h3>
+          <p>20-slot ARK: Survival Evolved server on bare metal i5-8600 / 16GB DDR4. Secured external access via Playit.gg and Tailscale with zero port forwarding.</p>
+          <div class="project-tech">
+            <span>AMP</span><span>Bare Metal</span><span>Tailscale</span><span>Playit.gg</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon"><i class="fas fa-gamepad"></i></div>
+            <div class="project-links">
+              <a href="https://github.com/lurgioh/Minecraft-server-build" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+          <span class="project-tag">Linux</span>
+          <h3>Minecraft Pixelmon Server</h3>
+          <p>Full-featured Pixelmon modded Minecraft server on Debian Linux. AMP panel integration for live configuration, restarts, and player monitoring.</p>
+          <div class="project-tech">
+            <span>Debian Linux</span><span>AMP</span><span>Java</span><span>Pixelmon</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon"><i class="fas fa-server"></i></div>
+            <div class="project-links">
+              <a href="https://github.com/lurgioh" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+          <span class="project-tag">Virtualization</span>
+          <h3>Proxmox Homelab Cluster</h3>
+          <p>i5-7500 running Proxmox VE for virtualization and LXC container management. Hosts multiple services and acts as the core infrastructure testing environment.</p>
+          <div class="project-tech">
+            <span>Proxmox VE</span><span>LXC</span><span>Docker</span><span>Linux</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WRITE-UPS -->
+  <section id="writeups" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Lab <span class="accent">Write-ups</span></h2>
+      <p class="section-sub">Technical deep-dives, build logs, and security findings from the homelab.</p>
+      <div class="writeups-grid">
+
+        <div class="writeup-card">
+          <div class="writeup-meta">
+            <span class="wu-tag security">Security</span>
+            <span class="wu-date">Coming Soon</span>
+          </div>
+          <h3>What My Honeypot Caught in 30 Days</h3>
+          <p>A breakdown of attacker behavior, top source countries, and the most common exploits attempted against a publicly-exposed T-Pot instance on DigitalOcean.</p>
+          <a href="#" class="wu-link disabled">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="writeup-card">
+          <div class="writeup-meta">
+            <span class="wu-tag infra">Infrastructure</span>
+            <span class="wu-date">Coming Soon</span>
+          </div>
+          <h3>Building a Zero-Trust Homelab with Tailscale</h3>
+          <p>How I replaced port forwarding with a zero-trust mesh network across Proxmox, TrueNAS, and game servers — without exposing a single port to the internet.</p>
+          <a href="#" class="wu-link disabled">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="writeup-card">
+          <div class="writeup-meta">
+            <span class="wu-tag network">Networking</span>
+            <span class="wu-date">Coming Soon</span>
+          </div>
+          <h3>pfSense + Grafana: Building a Real Network Dashboard</h3>
+          <p>Step-by-step guide to exporting pfSense firewall metrics to InfluxDB and visualizing bandwidth, blocked threats, and interface stats in Grafana.</p>
+          <a href="#" class="wu-link disabled">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+      </div>
+      <p class="writeup-note"><i class="fas fa-info-circle accent"></i> Write-ups are being drafted — check back soon or watch the <a href="https://github.com/lurgioh" target="_blank">GitHub</a> for updates.</p>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section id="stats" class="section">
+    <div class="container">
+      <h2 class="section-title">GitHub <span class="accent">Stats</span></h2>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <img src="https://github-readme-stats.vercel.app/api?username=lurgioh&show_icons=true&theme=transparent&hide_border=true&title_color=00d4ff&icon_color=00d4ff&text_color=c9d1d9&bg_color=0d1117" alt="GitHub Stats" loading="lazy" />
+        </div>
+        <div class="stat-card">
+          <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=lurgioh&layout=compact&theme=transparent&hide_border=true&title_color=00d4ff&text_color=c9d1d9&bg_color=0d1117" alt="Top Languages" loading="lazy" />
+        </div>
+      </div>
+      <div class="streak-card">
+        <img src="https://streak-stats.demolab.com?user=lurgioh&theme=transparent&hide_border=true&stroke=00d4ff&ring=00d4ff&fire=ff6e6e&currStreakLabel=00d4ff&sideLabels=c9d1d9&dates=8b949e" alt="GitHub Streak" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Get In <span class="accent">Touch</span></h2>
+      <p class="section-sub">I'm open to internships, part-time roles, and interesting projects. Drop me a line.</p>
+      <div class="contact-grid">
+        <div class="contact-links">
+          <a href="mailto:hlurgio@fau.edu" class="contact-item">
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+            <div><strong>Email</strong><span>hlurgio@fau.edu</span></div>
+          </a>
+          <a href="https://linkedin.com/in/harrison-lurgio-827a2b34a/" target="_blank" class="contact-item">
+            <div class="contact-icon"><i class="fab fa-linkedin"></i></div>
+            <div><strong>LinkedIn</strong><span>harrison-lurgio</span></div>
+          </a>
+          <a href="https://github.com/lurgioh" target="_blank" class="contact-item">
+            <div class="contact-icon"><i class="fab fa-github"></i></div>
+            <div><strong>GitHub</strong><span>lurgioh</span></div>
+          </a>
+          <a href="Resume.pdf" target="_blank" class="contact-item">
+            <div class="contact-icon"><i class="fas fa-file-alt"></i></div>
+            <div><strong>Resume</strong><span>Download PDF</span></div>
+          </a>
+        </div>
+        <form class="contact-form" id="contactForm">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="What's on your mind?" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary full-width">Send Message <i class="fas fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>Built by Harrison Lurgio &nbsp;·&nbsp; <span class="accent">lurgioh.github.io</span></p>
+      <p class="footer-sub">MIS + Cybersecurity @ FAU &nbsp;·&nbsp; Boca Raton, FL</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
