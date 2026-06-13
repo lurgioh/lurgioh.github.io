@@ -71,8 +71,21 @@ img { max-width: 100%; display: block; }
   font-family: 'JetBrains Mono', monospace;
   font-size: 1.4rem; font-weight: 700;
   color: var(--text); letter-spacing: -0.5px;
+  display: flex; align-items: center; gap: 0.6rem;
 }
 .nav-logo:hover { color: var(--text); }
+
+.nav-headshot {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--accent);
+  flex-shrink: 0;
+  transition: box-shadow var(--trans);
+}
+.nav-logo:hover .nav-headshot {
+  box-shadow: 0 0 0 3px rgba(0,212,255,0.3);
+}
 
 .nav-links {
   display: flex; align-items: center; gap: 0.25rem;
