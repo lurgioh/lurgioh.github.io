@@ -64,15 +64,15 @@
       <div class="hero-stats">
         <div class="hero-stat">
           <span class="hero-stat-num accent">100%</span>
-          <span class="hero-stat-label">Critical vulns remediated</span>
+          <span class="hero-stat-label">Critical vulns remediated<br>at current internship</span>
         </div>
         <div class="hero-stat">
           <span class="hero-stat-num accent">30,000+</span>
-          <span class="hero-stat-label">Users supported @ FAU</span>
+          <span class="hero-stat-label">Users supported<br>on FAU help desk</span>
         </div>
         <div class="hero-stat">
           <span class="hero-stat-num accent">300+</span>
-          <span class="hero-stat-label">Clients served, self-founded</span>
+          <span class="hero-stat-label">Clients served<br>running my own business</span>
         </div>
       </div>
     </div>
@@ -270,6 +270,7 @@
   <section id="projects" class="section">
     <div class="container">
       <h2 class="section-title">Homelab &amp; Personal <span class="accent">Projects</span></h2>
+      <p class="section-sub">Self-directed labs where I set up real infrastructure and break it on purpose to learn how it works.</p>
       <div class="projects-grid">
 
         <div class="project-card featured">
@@ -281,7 +282,7 @@
           </div>
           <span class="project-tag">Security</span>
           <h3>Cloud Honeypot (T-Pot)</h3>
-          <p>Deployed T-Pot on DigitalOcean to capture live attacker traffic. Monitors SSH brute-force campaigns, botnet activity, and malware drop attempts with real-time dashboards.</p>
+          <p>Wanted to see what real attacks look like in the wild, so I deployed T-Pot on DigitalOcean as bait. It captures live attacker traffic — SSH brute-force attempts, botnet activity, malware drops — on real-time dashboards.</p>
           <div class="project-tech">
             <span>T-Pot</span><span>DigitalOcean</span><span>Linux</span>
           </div>
@@ -296,7 +297,7 @@
           </div>
           <span class="project-tag">Infrastructure</span>
           <h3>TrueNAS + Tailscale NAS</h3>
-          <p>Built a remote-accessible NAS using TrueNAS SCALE with ZFS storage, SMB shares, and Tailscale for zero-trust remote access — no port forwarding required.</p>
+          <p>Wanted reliable file storage I could reach from anywhere without opening ports to the internet, so I built a NAS on TrueNAS SCALE (ZFS storage, SMB shares) and connected it through Tailscale for secure remote access.</p>
           <div class="project-tech">
             <span>TrueNAS SCALE</span><span>ZFS</span><span>Tailscale</span><span>SMB</span>
           </div>
@@ -305,13 +306,10 @@
         <div class="project-card featured">
           <div class="project-header">
             <div class="project-icon"><i class="fas fa-fire"></i></div>
-            <div class="project-links">
-              <a href="https://github.com/lurgioh" target="_blank"><i class="fab fa-github"></i></a>
-            </div>
           </div>
           <span class="project-tag">Networking</span>
           <h3>pfSense + Grafana Monitoring</h3>
-          <p>Configured pfSense as the homelab firewall with InfluxDB metric export and a Grafana dashboard providing real-time visibility into bandwidth and network traffic.</p>
+          <p>Wanted actual visibility into what's happening on my home network, so I set up pfSense as the firewall and built a Grafana dashboard (fed by InfluxDB) showing real-time bandwidth and traffic.</p>
           <div class="project-tech">
             <span>pfSense</span><span>Grafana</span><span>InfluxDB</span>
           </div>
@@ -326,7 +324,7 @@
           </div>
           <span class="project-tag">Linux</span>
           <h3>ARK Server (Bare Metal)</h3>
-          <p>20-slot ARK: Survival Evolved server on bare metal i5-8600 / 16GB DDR4. Secure external access via Playit.gg and Tailscale with zero port forwarding.</p>
+          <p>Set up a 20-slot ARK: Survival Evolved server on spare hardware (i5-8600, 16GB DDR4) so friends could play together, with secure remote access via Playit.gg and Tailscale — no port forwarding needed.</p>
           <div class="project-tech">
             <span>AMP</span><span>Bare Metal</span><span>Tailscale</span>
           </div>
@@ -341,7 +339,7 @@
           </div>
           <span class="project-tag">Linux</span>
           <h3>Minecraft Pixelmon Server</h3>
-          <p>Full-featured Pixelmon modded Minecraft server on Debian Linux with AMP panel for live configuration, restarts, and player monitoring.</p>
+          <p>Ran a modded Minecraft (Pixelmon) server for a friend group on Debian Linux, using an AMP panel for easy configuration, restarts, and player monitoring.</p>
           <div class="project-tech">
             <span>Debian Linux</span><span>AMP</span><span>Java</span>
           </div>
@@ -350,13 +348,10 @@
         <div class="project-card">
           <div class="project-header">
             <div class="project-icon"><i class="fas fa-server"></i></div>
-            <div class="project-links">
-              <a href="https://github.com/lurgioh" target="_blank"><i class="fab fa-github"></i></a>
-            </div>
           </div>
           <span class="project-tag">Virtualization</span>
           <h3>Proxmox Homelab</h3>
-          <p>i5-7500 running Proxmox VE for virtualization and LXC container management. Hosts multiple self-hosted services and acts as the core infrastructure testing environment.</p>
+          <p>Needed a home base for testing and self-hosting, so I set up an i5-7500 running Proxmox VE for virtualization and LXC containers — it's the core of everything else in my homelab.</p>
           <div class="project-tech">
             <span>Proxmox VE</span><span>LXC</span><span>Docker</span>
           </div>

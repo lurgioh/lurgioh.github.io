@@ -79,15 +79,16 @@ function drawMatrix() {
   ctx.font = `${fontSize}px JetBrains Mono, monospace`;
 
   drops.forEach((y, i) => {
+    if (Math.random() > 0.5) return;
     const char = chars[Math.floor(Math.random() * chars.length)];
-    ctx.fillStyle = Math.random() > 0.97 ? 'rgba(210,153,34,0.8)' : 'rgba(0,212,255,0.45)';
+    ctx.fillStyle = Math.random() > 0.985 ? 'rgba(210,153,34,0.7)' : 'rgba(0,212,255,0.35)';
     ctx.fillText(char, i * fontSize, y * fontSize);
     if (y * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
     drops[i]++;
   });
 }
 
-setInterval(drawMatrix, 65);
+setInterval(drawMatrix, 110);
 
 /* ============================================================
    SCROLL FADE-IN
