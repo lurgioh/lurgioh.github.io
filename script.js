@@ -21,11 +21,11 @@ document.querySelectorAll('.nav-links a').forEach(a => {
    TYPED TEXT
    ============================================================ */
 const phrases = [
-  'Systems & Networking Enthusiast',
-  'Homelab Builder',
-  'Cybersecurity Student',
-  'Linux Power User',
-  'Threat Hunter (in training)',
+  'Cybersecurity Analyst Intern',
+  'SOC & Endpoint Security (EDR)',
+  'Vulnerability Remediation',
+  'SIEM / KQL Threat Hunting',
+  'IT Support & Identity Management',
 ];
 
 let pIdx = 0, cIdx = 0, deleting = false;
@@ -64,7 +64,7 @@ function resizeCanvas() {
 resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
 
-const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノ';
+const chars = '0123456789ABCDEF:/#$*.';
 const fontSize = 13;
 let cols = Math.floor(canvas.width / fontSize);
 let drops = Array(cols).fill(1);
@@ -73,22 +73,21 @@ function drawMatrix() {
   cols = Math.floor(canvas.width / fontSize);
   if (drops.length !== cols) drops = Array(cols).fill(1);
 
-  ctx.fillStyle = 'rgba(13,17,23,0.05)';
+  ctx.fillStyle = 'rgba(13,17,23,0.06)';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  ctx.fillStyle = '#00d4ff';
   ctx.font = `${fontSize}px JetBrains Mono, monospace`;
 
   drops.forEach((y, i) => {
     const char = chars[Math.floor(Math.random() * chars.length)];
-    ctx.fillStyle = Math.random() > 0.95 ? '#ffffff' : 'rgba(0,212,255,0.6)';
+    ctx.fillStyle = Math.random() > 0.97 ? 'rgba(210,153,34,0.8)' : 'rgba(0,212,255,0.45)';
     ctx.fillText(char, i * fontSize, y * fontSize);
     if (y * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
     drops[i]++;
   });
 }
 
-setInterval(drawMatrix, 50);
+setInterval(drawMatrix, 65);
 
 /* ============================================================
    SCROLL FADE-IN
@@ -103,24 +102,11 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.12 });
 
 document.querySelectorAll(
-  '.skill-category, .tl-card, .cert-card, .project-card, .writeup-card, .contact-item, .stat-card, .streak-card'
+  '.skill-category, .tl-card, .cert-card, .project-card, .contact-item'
 ).forEach((el, i) => {
   el.classList.add('fade-in');
   el.style.transitionDelay = `${(i % 4) * 0.08}s`;
   observer.observe(el);
-});
-
-/* ============================================================
-   CONTACT FORM — mailto fallback
-   ============================================================ */
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const name    = document.getElementById('name').value;
-  const email   = document.getElementById('email').value;
-  const message = document.getElementById('message').value;
-  const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
-  const body    = encodeURIComponent(`From: ${name}\nEmail: ${email}\n\n${message}`);
-  window.location.href = `mailto:hlurgio@fau.edu?subject=${subject}&body=${body}`;
 });
 
 /* ============================================================
