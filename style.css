@@ -487,6 +487,132 @@ img { max-width: 100%; display: block; }
 }
 
 /* ============================================================
+   SECURITY LABS & INVESTIGATIONS
+   ============================================================ */
+.labs-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;
+  align-items: start;
+}
+.lab-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 1.75rem;
+  display: flex; flex-direction: column; gap: 1.25rem;
+  transition: border-color var(--trans), transform var(--trans), box-shadow var(--trans);
+}
+.lab-card:hover {
+  border-color: var(--accent); transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,212,255,0.08);
+}
+
+.lab-head { display: flex; align-items: flex-start; gap: 1rem; }
+.lab-icon {
+  width: 46px; height: 46px; border-radius: 10px; flex-shrink: 0;
+  background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.15rem; color: var(--accent);
+}
+.lab-icon.threat {
+  background: rgba(248,81,73,0.08); border-color: rgba(248,81,73,0.25);
+  color: var(--red);
+}
+.lab-head-text h3 { font-size: 1.15rem; font-weight: 600; line-height: 1.3; }
+.lab-tag {
+  display: inline-block; font-size: 0.72rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.5px;
+  margin-bottom: 0.35rem;
+}
+.lab-tag.hardening { color: var(--accent); }
+.lab-tag.threat    { color: var(--red); }
+
+.lab-lead { color: var(--text-muted); font-size: 0.9rem; }
+.lab-lead strong { color: var(--text); }
+.lab-lead code, .lab-list code, .lab-block p code {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.82em;
+  background: var(--surface2); border: 1px solid var(--border);
+  color: var(--accent); padding: 0.05rem 0.35rem; border-radius: 4px;
+}
+
+.lab-block h4 {
+  font-size: 0.82rem; font-weight: 600; color: var(--text);
+  text-transform: uppercase; letter-spacing: 0.5px;
+  margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;
+}
+.lab-block > p { color: var(--text-muted); font-size: 0.875rem; }
+
+.lab-list {
+  list-style: none; display: flex; flex-direction: column; gap: 0.6rem;
+}
+.lab-list li {
+  color: var(--text-muted); font-size: 0.875rem; line-height: 1.6;
+  padding-left: 1.1rem; position: relative;
+}
+.lab-list li::before {
+  content: '▹'; position: absolute; left: 0; color: var(--accent);
+}
+.lab-list strong { color: var(--text); }
+
+.lab-meta-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.lab-pill {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem; color: var(--text-muted);
+  background: var(--surface2); border: 1px solid var(--border);
+  padding: 0.3rem 0.65rem; border-radius: 6px;
+  display: inline-flex; align-items: center; gap: 0.4rem;
+}
+.lab-pill i { color: var(--accent); }
+
+/* STIG table */
+.stig-table-wrap { overflow-x: auto; border-radius: var(--radius); }
+.stig-table {
+  width: 100%; border-collapse: collapse;
+  font-size: 0.8rem;
+}
+.stig-table th, .stig-table td {
+  text-align: left; padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+.stig-table thead th {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px;
+  color: var(--text-muted); font-weight: 600;
+  background: var(--surface2);
+}
+.stig-table tbody td { color: var(--text-muted); }
+.stig-table tbody td:nth-child(2) {
+  font-family: 'JetBrains Mono', monospace; color: var(--accent);
+  white-space: nowrap;
+}
+.stig-table tbody tr:last-child td { border-bottom: none; }
+.stig-table tbody tr:hover td { background: rgba(0,212,255,0.04); }
+
+/* Code block */
+.code-block {
+  background: #010409; border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1rem 1.25rem;
+  overflow-x: auto;
+}
+.code-block code {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.8rem;
+  color: var(--text); line-height: 1.8; display: block;
+  white-space: pre;
+}
+.code-block .c-comment { color: var(--text-dim); }
+
+/* MITRE ATT&CK chips */
+.attack-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.attack-chip {
+  font-size: 0.75rem; color: var(--text-muted);
+  background: var(--surface2); border: 1px solid var(--border);
+  border-left: 2px solid var(--red);
+  padding: 0.35rem 0.65rem; border-radius: 5px;
+  display: inline-flex; flex-direction: column; line-height: 1.4;
+}
+.attack-chip em {
+  font-style: normal; font-size: 0.65rem; text-transform: uppercase;
+  letter-spacing: 0.4px; color: var(--red); font-weight: 600;
+}
+
+/* ============================================================
    WRITE-UPS
    ============================================================ */
 .writeups-grid {
@@ -630,6 +756,7 @@ footer p { color: var(--text-muted); font-size: 0.875rem; }
    ============================================================ */
 @media (max-width: 1024px) {
   .projects-grid { grid-template-columns: repeat(2, 1fr); }
+  .labs-grid     { grid-template-columns: 1fr; }
   .about-grid    { grid-template-columns: 1fr; }
   .contact-grid  { grid-template-columns: 1fr; gap: 2rem; }
   .stats-grid    { grid-template-columns: 1fr; }

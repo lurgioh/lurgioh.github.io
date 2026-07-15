@@ -103,7 +103,7 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.12 });
 
 document.querySelectorAll(
-  '.skill-category, .tl-card, .cert-card, .project-card, .contact-item'
+  '.skill-category, .tl-card, .cert-card, .lab-card, .project-card, .contact-item'
 ).forEach((el, i) => {
   el.classList.add('fade-in');
   el.style.transitionDelay = `${(i % 4) * 0.08}s`;

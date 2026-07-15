@@ -31,6 +31,7 @@
         <li><a href="#skills">Skills</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#certifications">Certs</a></li>
+        <li><a href="#labs">Labs</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact" class="nav-cta">Contact</a></li>
       </ul>
@@ -266,8 +267,132 @@
     </div>
   </section>
 
+  <!-- SECURITY LABS & INVESTIGATIONS -->
+  <section id="labs" class="section">
+    <div class="container">
+      <h2 class="section-title">Security Labs &amp; <span class="accent">Investigations</span></h2>
+      <p class="section-sub">Hands-on SOC work — hardening endpoints to DISA baselines and hunting real attacker activity across SIEM/EDR telemetry.</p>
+      <div class="labs-grid">
+
+        <!-- Windows 11 STIG Remediation -->
+        <article class="lab-card">
+          <div class="lab-head">
+            <div class="lab-icon"><i class="fas fa-lock"></i></div>
+            <div class="lab-head-text">
+              <span class="lab-tag hardening">Windows Hardening · DISA STIG</span>
+              <h3>Windows 11 STIG Remediation Lab</h3>
+            </div>
+          </div>
+          <p class="lab-lead">Remediated <strong>10 Windows 11 DISA STIG findings</strong> using Local Group Policy, Registry Editor, and PowerShell to build a security baseline like those required in government and enterprise environments.</p>
+
+          <div class="lab-block">
+            <h4><i class="fas fa-list-check accent"></i> Controls Implemented</h4>
+            <div class="stig-table-wrap">
+              <table class="stig-table">
+                <thead><tr><th>#</th><th>STIG ID</th><th>Description</th></tr></thead>
+                <tbody>
+                  <tr><td>1</td><td>WN11-CC-000315</td><td>Windows 11 STIG remediation</td></tr>
+                  <tr><td>2</td><td>WN11-CC-000110</td><td>Prevent HTTP printing</td></tr>
+                  <tr><td>3</td><td>WN11-CC-000197</td><td>Windows 11 STIG remediation</td></tr>
+                  <tr><td>4</td><td>WN11-CC-000285</td><td>Windows 11 STIG remediation</td></tr>
+                  <tr><td>5</td><td>WN11-CC-000385</td><td>Windows 11 STIG remediation</td></tr>
+                  <tr><td>6</td><td>WN11-CC-000327</td><td>Windows 11 STIG remediation</td></tr>
+                  <tr><td>7</td><td>WN11-CC-000326</td><td>Windows 11 STIG remediation</td></tr>
+                  <tr><td>8</td><td>WN11-CC-000305</td><td>Windows 11 STIG remediation</td></tr>
+                  <tr><td>9</td><td>WN11-CC-000052</td><td>Windows 11 STIG remediation</td></tr>
+                  <tr><td>10</td><td>WN11-AC-000005</td><td>Configure account lockout duration</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="lab-block">
+            <h4><i class="fas fa-terminal accent"></i> PowerShell Configuration — WN11-AC-000005</h4>
+            <pre class="code-block"><code><span class="c-comment"># Set lockout duration to 15 minutes and verify policy</span>
+net accounts /lockoutduration:15
+net accounts</code></pre>
+          </div>
+
+          <div class="lab-block">
+            <h4><i class="fas fa-lightbulb accent"></i> What I Learned</h4>
+            <p>Reinforced how enterprise security policies are applied through Group Policy, registry modifications, and PowerShell, while building familiarity with Windows hardening techniques used in regulated environments.</p>
+          </div>
+
+          <div class="project-tech">
+            <span>Windows 11</span><span>Group Policy</span><span>Registry</span><span>PowerShell</span><span>DISA STIG</span>
+          </div>
+        </article>
+
+        <!-- Hunt 11: Compromised Account -->
+        <article class="lab-card">
+          <div class="lab-head">
+            <div class="lab-icon threat"><i class="fas fa-user-secret"></i></div>
+            <div class="lab-head-text">
+              <span class="lab-tag threat">Threat Hunt · Investigation</span>
+              <h3>Hunt 11: Just Another Day — Compromised Account</h3>
+            </div>
+          </div>
+          <p class="lab-lead">A billing analyst account (<code>j.morris</code>) was flagged for suspicious activity. The investigation revealed a <strong>living-off-the-land (LOTL) intrusion</strong> — RDP access from external IPs, reconnaissance, lateral movement, and HR data collection using only legitimate credentials and built-in Windows utilities. No malware or exploits involved.</p>
+
+          <div class="lab-meta-row">
+            <span class="lab-pill"><i class="fas fa-network-wired"></i> Log N Pacific Cyber Range</span>
+            <span class="lab-pill"><i class="fas fa-chart-line"></i> Microsoft Sentinel</span>
+            <span class="lab-pill"><i class="fas fa-magnifying-glass"></i> Defender Advanced Hunting (KQL)</span>
+            <span class="lab-pill"><i class="fas fa-calendar"></i> Mar 8–18, 2026</span>
+          </div>
+
+          <div class="lab-block">
+            <h4><i class="fas fa-crosshairs accent"></i> Attack Chain</h4>
+            <ul class="lab-list">
+              <li><strong>Initial Access</strong> — Multiple RemoteInteractive (RDP) logons from external IPs (e.g. <code>193.36.225.245</code>), inconsistent with the user's normal behavior.</li>
+              <li><strong>Reconnaissance</strong> — Native commands to map the environment: <code>whoami</code>, <code>hostname</code>, <code>net use</code>, <code>net view /domain</code>, <code>arp</code>, <code>nslookup</code>.</li>
+              <li><strong>Lateral Movement</strong> — Pivoted over RDP to an IT workstation and the file server (primary objective).</li>
+              <li><strong>File Tampering</strong> — Edited approved billing records, planted a file renamed to match the invoice convention, and altered the billing audit trail to blend in.</li>
+              <li><strong>Collection</strong> — Broad access to sensitive HR data: payroll, employee awards, onboarding, and payroll review files.</li>
+            </ul>
+          </div>
+
+          <div class="lab-block">
+            <h4><i class="fas fa-circle-exclamation accent"></i> Root Cause</h4>
+            <p>Compromised user credentials. The attacker authenticated successfully with the billing analyst account and performed all activity with legitimate Windows utilities (<code>cmd</code>, <code>net</code>, <code>arp</code>, <code>nslookup</code>, <code>mstsc</code>, <code>whoami</code>) — no malware or exploitation identified.</p>
+          </div>
+
+          <div class="lab-block">
+            <h4><i class="fas fa-shield-halved accent"></i> Detection Opportunities</h4>
+            <ul class="lab-list">
+              <li>Monitor RDP logons originating from external / non-corporate IPs.</li>
+              <li>Baseline file-share access by department and alert on out-of-role access.</li>
+              <li>Detect files created and immediately renamed to match naming conventions in sensitive directories.</li>
+              <li>Alert when audit logs or financial approval records change outside normal workflows.</li>
+              <li>Correlate RDP with native admin command execution to catch hands-on-keyboard activity.</li>
+            </ul>
+          </div>
+
+          <div class="lab-block">
+            <h4><i class="fas fa-diagram-project accent"></i> MITRE ATT&amp;CK Mapping</h4>
+            <div class="attack-grid">
+              <span class="attack-chip"><em>Initial Access</em> Valid Accounts · T1078</span>
+              <span class="attack-chip"><em>Discovery</em> System Owner/User · T1033</span>
+              <span class="attack-chip"><em>Discovery</em> System Information · T1082</span>
+              <span class="attack-chip"><em>Discovery</em> Network Service · T1046</span>
+              <span class="attack-chip"><em>Discovery</em> Network Share · T1135</span>
+              <span class="attack-chip"><em>Lateral Movement</em> RDP · T1021.001</span>
+              <span class="attack-chip"><em>Collection</em> Network Shared Drive · T1039</span>
+              <span class="attack-chip"><em>Defense Evasion</em> Living Off the Land</span>
+            </div>
+          </div>
+
+          <div class="project-tech">
+            <span>Microsoft Sentinel</span><span>Defender XDR</span><span>KQL</span><span>RDP Log Analysis</span><span>LOTL Detection</span><span>MITRE ATT&amp;CK</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
   <!-- PROJECTS -->
-  <section id="projects" class="section">
+  <section id="projects" class="section section-alt">
     <div class="container">
       <h2 class="section-title">Homelab &amp; Personal <span class="accent">Projects</span></h2>
       <p class="section-sub">Self-directed labs where I set up real infrastructure and break it on purpose to learn how it works.</p>
@@ -378,7 +503,7 @@
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="section section-alt">
+  <section id="contact" class="section">
     <div class="container">
       <h2 class="section-title">Get In <span class="accent">Touch</span></h2>
       <p class="section-sub">Open to internships, entry-level roles, and interesting projects.</p>
